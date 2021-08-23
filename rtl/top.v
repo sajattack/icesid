@@ -1,5 +1,5 @@
 `default_nettype none
-`define NO_MUACM
+//`define NO_MUACM
 `define BUS_DRIVEN
 
 
