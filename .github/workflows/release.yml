@@ -35,7 +35,7 @@ jobs:
               uses: actions/upload-artifact@v2
               with:
                 name: icesid-build
-                path: build/icesid-${SHORT_SHA}.bin
+                path: build/icesid-*.bin
 
             - name: Release (as draft)
               uses: softprops/action-gh-release@v1
@@ -44,6 +44,6 @@ jobs:
                 tag_name: ${{ env.TAG }}
                 draft: true
                 files: |
-                  build/icesid-${SHORT_SHA}.bin
+                  build/icesid-*.bin
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
