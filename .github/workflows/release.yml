@@ -30,21 +30,21 @@ jobs:
                 make -j$(nproc)
                 echo "SHORT_SHA=`git rev-parse --short HEAD`" >> $GITHUB_ENV
                 echo "DATE=`date + '%Y%m%d'`" >> $GITHUB_ENV
-                mv build/icesid.bin build/icesid-${{ env.DATE }}-${{ env.SHORT_SHA }}.bin
+                mv "build/icesid.bin" "build/icesid-${{ env.DATE }}-${{ env.SHORT_SHA }}.bin"
 
             - name: Build artifact upload
               uses: actions/upload-artifact@v2
               with:
                 name: icesid-build
-                path: build/icesid-*.bin
+                path: build/icesid*.bin
 
             - name: Release (as draft)
               uses: softprops/action-gh-release@v1
               with:
-                name: Release ${{env.DATE}} ${{ env.SHORT_SHA }}
-                tag_name: ${{env.DATE}}-${{ env.SHORT_SHA }}
+                name: Release ${{ env.DATE }} ${{ env.SHORT_SHA }}
+                tag_name: ${{ env.DATE }}-${{ env.SHORT_SHA }}
                 draft: true
                 files: |
-                  build/icesid-*.bin
+                  build/icesid*.bin
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
