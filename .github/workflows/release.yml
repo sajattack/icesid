@@ -28,7 +28,7 @@ jobs:
             - name: Set Env Vars
               run: |
                 echo "SHORT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
-                echo "DATE=$(date + '%Y%m%d')" >> $GITHUB_ENV
+                echo "DATE=$(date +'%Y%m%d')" >> $GITHUB_ENV
                 echo ${{ env.SHORT_SHA }}
                 echo ${{ env.DATE }}
 
