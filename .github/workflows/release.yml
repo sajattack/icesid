@@ -3,7 +3,7 @@ name: release
 on:
     push:
         branches: [ $default-branch ]
-    workflow_dispatch:
+    #workflow_dispatch:
 
 jobs:
     build:
@@ -46,7 +46,7 @@ jobs:
             - name: Release (as draft)
               uses: softprops/action-gh-release@v1
               with:
-                name: Release ${{ env.DATE }} ${{ env.SHORT_SHA }}
+                name: Release ${{ env.DATE }}-${{ env.SHORT_SHA }}
                 tag_name: ${{ env.DATE }}-${{ env.SHORT_SHA }}
                 draft: true
                 files: |
